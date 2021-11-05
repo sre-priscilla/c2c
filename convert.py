@@ -2,12 +2,16 @@
 
 import sys
 from typing import Union
+import typing
 
 import yaml
 
 
-def dfs(prefix: str, node: Union[int, float, str, list, dict]):
-    if type(node) == int or type(node) == float or type(node) == str:
+def dfs(prefix: str, node: Union[bool, int, float, str, list, dict]):
+    if type(node) == bool:
+        bool_value = 'true' if node else 'false'
+        print(f"{prefix} = {bool_value}")
+    elif type(node) in {int, float, str}:
         print(f"{prefix} = {node}")
     elif type(node) == list:
         for i, obj in enumerate(node):
